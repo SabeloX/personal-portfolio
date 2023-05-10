@@ -14,7 +14,7 @@ export const Hero = ({ textColor, name, profession, slogan } : HeroProps) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "100vh",
+                height: "90vh",
                 justifyContent: "center",
                 textAlign: "center"
             }}

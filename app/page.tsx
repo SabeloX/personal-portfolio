@@ -4,7 +4,13 @@ import styles from './page.module.css'
 import { Hero } from '@/components/audience/hero'
 import { useEffect, useState } from 'react';
 import { Colours } from '@/colours';
-import { details } from '@/samples';
+import { details, projects, skills } from '@/samples';
+import { Container } from '@mui/material';
+import { Navbar } from '@/components/audience/navbar';
+import { About } from '@/components/audience/about';
+import { Skills } from '@/components/audience/skills';
+import { Projects } from '@/components/audience/projects';
+import { Contact } from '@/components/audience/contact';
 
 export default function Home() {
 
@@ -32,13 +38,55 @@ export default function Home() {
       }
     }
   }, [theme]);  return (
-    <main className={styles.main}>
-      <Hero
-        textColor={textColor}
-        name={details.name}
-        profession={details.profession}
-        slogan={details.slogan}
-      />
-    </main>
+    <Container
+        sx={{
+          padding: "0px !important",
+          minHeight: "100vh",
+          maxWidth: "1360px !important"
+        }}
+        id="home"
+      >
+        <Navbar
+          textColor={textColor}
+          backgroundColor={mainColor}
+          setTheme={setTheme}
+          theme={theme}
+          lightShadeColor={lightShadeColor}
+        />
+        <main className={styles.main}>
+          <Hero
+            textColor={textColor}
+            name={`${details.name} ${details.surname}`}
+            slogan={details.slogan}
+            profession={details.profession}
+          />
+          <About
+            textColor={textColor}
+            aboutImage={details.profile}
+            aboutText={details.about}
+          />
+          <Skills
+            skills={skills}
+            textColor={textColor}
+            lightShadeColor={lightShadeColor}
+          />
+          <Projects
+            textColor={textColor}
+            lightShadeColor={lightShadeColor}
+            mainColor={mainColor}
+            projects={projects}
+          />
+          <Contact
+            textColor={textColor}
+            lightShadeColor={lightShadeColor}
+            contact={details.contact}
+            email={details.email}
+          />
+        </main>
+
+        <footer className={styles.footer}>
+          
+        </footer>
+      </Container>
   )
 }
