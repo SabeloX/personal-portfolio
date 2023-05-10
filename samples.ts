@@ -1,4 +1,4 @@
-import { DetailsDocument, ProjectsDocument, SkillsDocument } from "./types"
+import { DetailsDocument, ProjectsDocument, SkillsDocument } from "./lib/database"
 
 export const details: DetailsDocument =  {
     about: 'My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.',
