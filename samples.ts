@@ -44,37 +44,94 @@ export const skills: SkillsDocument[] = [
         _id: '6452eb62dbda447312f561fb',
         title: 'Frontend',
         data: [
-            'HTML/CSS',
-            'JavaScript',
-            'Bootstrap',
-            'React.js',
-            'Material UI',
-            'Mantine',
-            'Responsiveness'
+            {
+                skill: 'HTML/CSS',
+                icon: "/icons/css.svg"
+            },
+            {
+                skill: 'JavaScript',
+                icon: "/icons/js.svg"
+            },
+            {
+                skill: 'Bootstrap',
+                icon: "/icons/bootstrap.svg"
+            },
+            {
+                skill: 'React.js',
+                icon: "/icons/react.svg"
+            },
+            {
+                skill: 'Material UI',
+                icon: "/icons/mui.svg"
+            },
+            {
+                skill: 'Mantine',
+                icon: "/icons/mantine.svg"
+            },
+            {
+                skill: 'Responsiveness',
+                icon: "/icons/respo.svg"
+            }
         ]
     },
     {
         _id: '6452ebd0dbda447312f561fc',
         title: 'Backend',
         data: [
-            'Node.js',
-            'Python',
-            'MongoDB/Mongoose',
-            'Express.js',
-            'SQL',
-            'REST API',
-            'AWS DynamoDB'
+            {
+                skill: 'Node.js',
+                icon: "/icons/nodejs.svg"
+            },
+            {
+                skill:'Python',
+                icon: "/icons/py.svg"
+            },
+            {
+                skill: 'MongoDB/Mongoose',
+                icon: "/icons/mongodb.svg"
+            },
+            {
+                skill: 'Express.js',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill:'SQL',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill: 'REST API',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill: 'AWS DynamoDB',
+                icon: "/icons/express.svg"
+            }
         ]
     },
     {
         _id: '6452ec31dbda447312f561fd',
         title: 'Other',
         data: [
-            'Git/Github',
-            'AWS Services',
-            'Agile/SCRUM',
-            'Typescript',
-            'Linux/Unix'
+            {
+                skill: 'Git/Github',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill: 'AWS Services',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill: 'Agile/SCRUM',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill: 'Typescript',
+                icon: "/icons/express.svg"
+            },
+            {
+                skill: 'Linux/Unix',
+                icon: "/icons/express.svg"
+            }
         ]
     }
 ]

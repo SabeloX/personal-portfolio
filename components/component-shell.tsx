@@ -34,8 +34,9 @@ export const ComponentShell = ({ heading, textColor, children, sx, subHeading, i
                 <Typography
                     variant="h4"
                     sx={{
-                        color: textColor
+                        color: textColor,
                     }}
+                    fontSize={40}
                     className="heading"
                 >
                     {heading}

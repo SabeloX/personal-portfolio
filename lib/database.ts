@@ -31,7 +31,10 @@ export interface DetailsDocument{
  * Skills document type
  */
 export interface SkillsDocument {
-    data: string[];
+    data: {
+        icon?: string;
+        skill: string;
+    }[];
     title: string;
     _id: string;
 }

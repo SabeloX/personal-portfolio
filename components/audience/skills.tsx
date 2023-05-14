@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from "@mui/material"
 import { ComponentShell } from "../component-shell"
 import { SkillsDocument } from "../../lib/database";
+import Image from "next/image";
 
 export interface SkillsProps {
     textColor: string;
@@ -44,7 +45,7 @@ export const Skills = ({textColor, skills, mainColor, theme}: SkillsProps) => {
                             <Typography
                                 className="heading"
                                 variant="h5"
-                                fontSize={26}
+                                fontSize={30}
                                 color={textColor}
                                 sx={{
                                     textDecoration: "underline"
@@ -56,25 +57,42 @@ export const Skills = ({textColor, skills, mainColor, theme}: SkillsProps) => {
                                 sx={{
                                     padding: "0 !important",
                                     display: "flex",
-                                    flexDirection: "column",
+                                    // flexDirection: "column",
                                     flexWrap: "wrap",
-                                    minHeight: "160px",
+                                    // minHeight: "160px",
+                                    gap: "10px"
                                 }}
                             >
                                 {
-                                    item.data.map((skill: string, index: number) => (
-                                        <Typography
-                                            key={index + skill}
-                                            variant="body1"
-                                            className="text"
+                                    item.data.map((skill: any, index: number) => (
+                                        <Container
                                             sx={{
-                                                color: textColor
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "5px",
+                                                padding: "0 !important",
+                                                width: "unset"
                                             }}
-                                            fontSize={18}
-                                            lineHeight={1.75}
                                         >
-                                            { skill }
-                                        </Typography>
+                                            {skill.icon && <Image
+                                                src={skill.icon}
+                                                width={30}
+                                                height={30}
+                                                alt="icon"
+                                            />}
+                                            <Typography
+                                                key={index + skill}
+                                                variant="body1"
+                                                className="text"
+                                                sx={{
+                                                    color: textColor
+                                                }}
+                                                fontSize={22}
+                                                lineHeight={1.75}
+                                            >
+                                                { skill.skill }
+                                            </Typography>
+                                        </Container>
                                     ))
                                 }
                             </Container>
