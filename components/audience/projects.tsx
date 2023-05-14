@@ -8,9 +8,10 @@ export interface ProjectsProps {
     lightShadeColor: string;
     mainColor: string;
     projects: ProjectsDocument[];
+    theme: string;
 }
 
-export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : ProjectsProps) => {
+export const Projects = ({ textColor, lightShadeColor, mainColor, projects, theme } : ProjectsProps) => {
     return (
         <ComponentShell
             textColor={textColor}
@@ -26,7 +27,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                         key={index}
                         sx={{
                             display: "flex",
-                            backgroundColor: lightShadeColor,
+                            backgroundColor: mainColor,
                             width: { md: "780px", xs: "100%" },
                             borderRadius: "20px",
                             padding: "0 !important",
@@ -35,7 +36,8 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                             // gap: "40px",
                             margin: "0 !important",
                             placeSelf: "center",
-                            boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
+                            boxShadow: `2px 2px 12px ${theme === "dark" ? "rgba(255,255,255,30%)" : "rgba(0,0,0,30%)"}`,
+                            border: `1px solid ${theme === "dark" ? "#fff" : "#000"}`,
                         }}
                     >
                         <Container
@@ -80,7 +82,12 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                                     textDecoration: "underline"
                                 }}
                             >
-                                {item.title}
+                                <a
+                                    href={item.demo}
+                                    target="_blank"
+                                >
+                                    {item.title}
+                                </a>
                             </Typography>
                             <Container
                                 sx={{
@@ -94,23 +101,44 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                                 >
                                     {item.description}
                                 </Typography>
-                                <List>
-                                    {
-                                        item.concepts.map((concept, index) => (
-                                            <ListItem
-                                                key={index}
-                                            >
-                                                <Typography
-                                                    className="text"
-                                                    color={textColor}
-                                                    fontSize={14}
+                                <Container
+                                    sx={{
+                                        padding: "0 !important"
+                                    }}
+                                >
+                                    <Typography
+                                        variant="body1"
+                                        color={textColor}
+                                        className="text"
+                                    >
+                                        Concepts:
+                                    </Typography>
+                                    <List
+                                        sx={{
+                                            display: "flex",
+                                            flexWrap: "wrap"
+                                        }}
+                                    >
+                                        {
+                                            item.concepts.map((concept, index) => (
+                                                <ListItem
+                                                    key={index}
+                                                    sx={{
+                                                        width: "unset"
+                                                    }}
                                                 >
-                                                    {concept}
-                                                </Typography>
-                                            </ListItem>
-                                        ))
-                                    }
-                                </List>
+                                                    <Typography
+                                                        className="text"
+                                                        color={textColor}
+                                                        fontSize={14}
+                                                    >
+                                                        {concept}
+                                                    </Typography>
+                                                </ListItem>
+                                            ))
+                                        }
+                                    </List>
+                                </Container>
                             </Container>
                             <Container
                                 sx={{
@@ -124,11 +152,19 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                                 >
                                     Tools I used:
                                 </Typography>
-                                <List>
+                                <List
+                                    sx={{
+                                        display: "flex",
+                                        flexWrap: "wrap"
+                                    }}
+                                >
                                     {
                                         item.tools.map((tool, index) => (
                                             <ListItem
                                                 key={index}
+                                                sx={{
+                                                    width: "unset"
+                                                }}
                                             >
                                                 <Typography
                                                     className="text"
@@ -142,7 +178,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                                     }
                                 </List>
                             </Container>
-                            <Container
+                            {/* <Container
                                 sx={{
                                     gap: "20px",
                                     display: "flex",
@@ -169,8 +205,9 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                                                 borderRadius: "15px",
                                                 height: "35px",
                                                 color: textColor,
-                                                boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
+                                                boxShadow: `2px 2px 12px ${theme === "dark" ? "rgba(255,255,255,30%)" : "rgba(0,0,0,30%)"}`,
                                                 textTransform: "unset !important",
+                                                border: `1px solid ${theme === "dark" ? "#fff" : "#000"}`,
                                                 padding: "10px 0"
                                             }}
                                         >
@@ -190,7 +227,7 @@ export const Projects = ({ textColor, lightShadeColor, mainColor, projects } : P
                                         </Button>
                                     ))
                                 }
-                            </Container>
+                            </Container> */}
                         </Container>
                     </Container>
                 ))

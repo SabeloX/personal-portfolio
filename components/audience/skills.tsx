@@ -5,10 +5,11 @@ import { SkillsDocument } from "../../lib/database";
 export interface SkillsProps {
     textColor: string;
     skills: SkillsDocument[];
-    lightShadeColor: string;
+    mainColor: string;
+    theme: string;
 }
 
-export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
+export const Skills = ({textColor, skills, mainColor, theme}: SkillsProps) => {
     return (
         <ComponentShell
             heading="Skills"
@@ -28,9 +29,10 @@ export const Skills = ({textColor, skills, lightShadeColor}: SkillsProps) => {
                         <Box
                             key={item._id + index}
                             sx={{
-                                backgroundColor: lightShadeColor,
+                                backgroundColor: mainColor,
                                 borderRadius: "20px",
-                                boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
+                                boxShadow: `2px 2px 12px ${theme === "dark" ? "rgba(255,255,255,30%)" : "rgba(0,0,0,30%)"}`,
+                                border: `1px solid ${theme === "dark" ? "#fff" : "#000"}`,
                                 padding: "20px",
                                 display: "flex",
                                 flexDirection: "column",

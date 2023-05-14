@@ -121,7 +121,7 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme, lightShade
                         >
                             <Box
                                 sx={{
-                                    backgroundColor: lightShadeColor,
+                                    backgroundColor,
                                     height: "100vh",
                                     width: "100vw",
                                     position: "absolute",
@@ -137,8 +137,8 @@ export const Navbar = ({ textColor, backgroundColor, theme, setTheme, lightShade
                                 <IconButton
                                     sx={{
                                         position: "absolute",
-                                        top: 0,
-                                        left: 0,
+                                        top: "-30px",
+                                        left: "-30px",
                                         padding: "40px"
                                     }}
                                     onClick={() => setOpen(false)}

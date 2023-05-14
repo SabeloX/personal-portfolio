@@ -7,9 +7,10 @@ import axios from "axios";
 
 export interface ContactProps {
     textColor: string;
-    lightShadeColor: string;
+    mainColor: string;
     contact: string;
     email: string;
+    theme: string;
 }
 
 type StateVariable = {
@@ -17,7 +18,7 @@ type StateVariable = {
     error: boolean;
 }
 
-export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactProps) => {
+export const Contact = ({ textColor, mainColor, contact, email, theme }: ContactProps) => {
     const [name, setName] = useState<StateVariable>({ value: "", error: false });
     const [emailAddress, setEmail] = useState<StateVariable>({ value: "", error: false });
     const [message, setMessage] = useState<StateVariable>({ value: "", error: false });
@@ -28,7 +29,7 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
         <ComponentShell
             heading="Get in touch"
             textColor={textColor}
-            subHeading="Please do not hesitate to contact me about anything."
+            subHeading="Do not hesitate to contact me about anything."
             id="contact"
         >
             <Container
@@ -66,13 +67,15 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                                 maxWidth: "400px",
                                 padding: "10px",
                                 height: "150px",
-                                backgroundColor: lightShadeColor,
+                                backgroundColor: mainColor,
                                 borderRadius: "20px",
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: "20px",
                                 alignItems: "center",
-                                justifyContent: "center"
+                                justifyContent: "center",
+                                border: `1px solid ${theme === "dark" ? "#fff" : "#000"}`,
+                                boxShadow: `2px 2px 12px ${theme === "dark" ? "rgba(255,255,255,30%)" : "rgba(0,0,0,30%)"}`,
                             }}
                         >
                             <Container
@@ -140,9 +143,11 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                         borderBottom: name.error ? "none" : `1px solid ${textColor}`,
                         "& .MuiFormLabel-root": {
                             color: `${textColor}`,
+                            fontFamily: "'Patrick Hand', cursive",
                         },
                         "& .MuiInputBase-input": {
                             color: `${textColor}`,
+                            fontFamily: "'Patrick Hand', cursive",
                         },
                         "& .MuiFormControl-root": {
                             borderBottom: "none",
@@ -167,9 +172,11 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                         borderBottom: emailAddress.error ? "none" : `1px solid ${textColor}`,
                         "& .MuiFormLabel-root": {
                             color: `${textColor}`,
+                            fontFamily: "'Patrick Hand', cursive",
                         },
                         "& .MuiInputBase-input": {
                             color: `${textColor}`,
+                            fontFamily: "'Patrick Hand', cursive",
                         },
                         "& .MuiInputBase-root:after": {
                             borderBottom: `1px solid ${textColor} !important`,
@@ -198,12 +205,15 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                         borderBottom: message.error ? "none" : `1px solid ${textColor}`,
                         "& .MuiFormLabel-root": {
                             color: `${textColor}`,
+                            fontFamily: "'Patrick Hand', cursive",
                         },
                         "& .MuiInputBase-input": {
                             color: `${textColor}`,
+                            fontFamily: "'Patrick Hand', cursive",
                         },
                         "& .MuiInputBase-root:after": {
                             borderBottom: `1px solid ${textColor} !important`,
+                            color: `${textColor}`,
                         },
                         "& .MuiFormControl-root": {
                             border: "none",
@@ -238,6 +248,12 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                                     value={item}
                                     control={<Radio />}
                                     label={item}
+                                    sx={{
+                                        ".MuiTypography-root": {
+                                            fontFamily: "'Patrick Hand', cursive"
+                                        }
+                                    }}
+
                                 />
                             ))
                         }
@@ -261,14 +277,16 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
                 >
                     <Button
                         sx={{
-                            backgroundColor: `${lightShadeColor} !important`,
+                            backgroundColor: `${mainColor} !important`,
                             width: "200px",
                             borderRadius: "15px",
                             height: "35px",
                             color: textColor,
-                            boxShadow: "2px 2px 12px rgba(0,0,0,30%)",
+                            boxShadow: `2px 2px 12px ${theme === "dark" ? "rgba(255,255,255,30%)" : "rgba(0,0,0,30%)"}`,
                             textTransform: "unset !important",
-                            padding: "10px 0"
+                            border: `1px solid ${theme === "dark" ? "#fff" : "#000"}`,
+                            padding: "10px 0",
+                            fontFamily: "'Patrick Hand', cursive"
                         }}
                         onClick={() => {
                             if (name.value === "" || emailAddress.value === "" || subject.value === "" || message.value === "") {
@@ -326,11 +344,12 @@ export const Contact = ({ textColor, lightShadeColor, contact, email }: ContactP
             <Snackbar
                 open={open}
                 sx={{
-                    backgroundColor: lightShadeColor,
+                    backgroundColor: mainColor,
                     padding: "20px",
                     borderRadius: "20px",
                 }}
-                autoHideDuration={500}
+                autoHideDuration={2000}
+                onClose={() => setOpen(false)}
             >
                 <Typography
                     sx={{

@@ -68,19 +68,22 @@ export default function Home() {
           <Skills
             skills={skills}
             textColor={textColor}
-            lightShadeColor={lightShadeColor}
+            mainColor={mainColor}
+            theme={theme}
           />
           <Projects
             textColor={textColor}
             lightShadeColor={lightShadeColor}
             mainColor={mainColor}
             projects={projects}
+            theme={theme}
           />
           <Contact
             textColor={textColor}
-            lightShadeColor={lightShadeColor}
+            mainColor={mainColor}
             contact={details.contact}
             email={details.email}
+            theme={theme}
           />
         </main>
 

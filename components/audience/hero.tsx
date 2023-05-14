@@ -14,15 +14,23 @@ export const Hero = ({ textColor, name, profession, slogan } : HeroProps) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "90vh",
+                height: "100vh",
                 justifyContent: "center",
                 textAlign: "center"
             }}
         >
-            <Typography sx={{ color: textColor }} variant="h4">{ name }</Typography>
             <Typography 
-                className="heading" sx={{ color: textColor }} variant="h2">{ profession }</Typography>
-            <Typography sx={{ color: textColor }} variant="subtitle2">{ slogan }</Typography>
+                className="heading"
+                sx={{
+                    color: textColor,
+                    fontSize: "44px"
+                }} variant="h4">{name}</Typography>
+            <Typography 
+                className="heading" sx={{ color: textColor,
+                    fontSize: "76px" }} variant="h2">{ profession }</Typography>
+            <Typography
+                className="text" sx={{ color: textColor ,
+                    fontSize: "20px"}} variant="subtitle2">{ slogan }</Typography>
         </Container>
     )
 }

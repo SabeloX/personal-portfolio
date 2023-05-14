@@ -37,6 +37,7 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
                     sx={{
                         color: textColor
                     }}
+                    className="text"
                 >
                     {aboutText}
                 </Typography>
