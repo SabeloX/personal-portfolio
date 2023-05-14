@@ -11,12 +11,12 @@ body {
 }
 
 .text {
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Patrick Hand', cursive !important;
   /* font-size: 22px; */
 }
 
 .heading {
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Patrick Hand', cursive !important;
 }
 
 a {
