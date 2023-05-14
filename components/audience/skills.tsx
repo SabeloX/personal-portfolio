@@ -73,6 +73,7 @@ export const Skills = ({textColor, skills, mainColor, theme}: SkillsProps) => {
                                                 padding: "0 !important",
                                                 width: "unset"
                                             }}
+                                            key={index + skill}
                                         >
                                             {skill.icon && <Image
                                                 src={skill.icon}
@@ -81,7 +82,6 @@ export const Skills = ({textColor, skills, mainColor, theme}: SkillsProps) => {
                                                 alt="icon"
                                             />}
                                             <Typography
-                                                key={index + skill}
                                                 variant="body1"
                                                 className="text"
                                                 sx={{
