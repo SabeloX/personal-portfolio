@@ -13,30 +13,43 @@ export const details: DetailsDocument =  {
 
 export const projects: ProjectsDocument[] = [
     {
-      _id: '6452ec9cdbda447312f561fe',
-      image: '/projects/ttt.png',
-      title: 'Talk To Tobo',
-      concepts: [
-        'Dynamic blogs',
-        'CRUD operations',
-        'Authentication & authorization',
-        'Responsive'
-      ],
-      source: 'https://github.com/SabeloX/portfolio',
-      demo: 'https://ttt-opal.vercel.app/',
-      tools: [ 'Next.js', 'Mantine - UI Framework' ],
-      description: 'A personal website for a life coach who wanted to explore the digital world.'
+        _id: '6452ec9cdbda44731asceiemm',
+        image: '/projects/dic.png',
+        title: 'Dictionary',
+        concepts: [
+            'Third-party API',
+            'Responsive'
+        ],
+        source: 'https://github.com/SabeloX/Dictionary',
+        demo: 'https://dictionaryx.vercel.app/',
+        tools: [ 'Next.js', 'Mantine - UI Framework' ],
+        description: 'A small project that implements the free dictionary api. Pronunciation audio is included. You can dynamically change the font.'
     },
-    {
-      _id: '6452edecdbda447312f561ff',
-      image: '/projects/dc.png',
-      title: 'Digital Characters',
-      concepts: [ 'Data input/output', 'CRUD operations', 'Responsive' ],
-      source: 'https://github.com/SabeloX/create-and-display-digital-characters',
-      demo: 'https://create-and-display-digital-characters.vercel.app/',
-      tools: [ 'Next.js', 'MongoDB', 'Mongoose' ],
-      description: 'This is a platform that allows users to create and display digital characters.'
-    }
+    // {
+    //   _id: '6452ec9cdbda447312f561fe',
+    //   image: '/projects/ttt.png',
+    //   title: 'Talk To Tobo',
+    //   concepts: [
+    //     'Dynamic blogs',
+    //     'CRUD operations',
+    //     'Authentication & authorization',
+    //     'Responsive'
+    //   ],
+    //   source: 'https://github.com/SabeloX/portfolio',
+    //   demo: 'https://ttt-opal.vercel.app/',
+    //   tools: [ 'Next.js', 'Mantine - UI Framework' ],
+    //   description: 'A personal website for a life coach who wanted to explore the digital world.'
+    // },
+    // {
+    //   _id: '6452edecdbda447312f561ff',
+    //   image: '/projects/dc.png',
+    //   title: 'Digital Characters',
+    //   concepts: [ 'Data input/output', 'CRUD operations', 'Responsive' ],
+    //   source: 'https://github.com/SabeloX/create-and-display-digital-characters',
+    //   demo: 'https://create-and-display-digital-characters.vercel.app/',
+    //   tools: [ 'Next.js', 'MongoDB', 'Mongoose' ],
+    //   description: 'This is a platform that allows users to create and display digital characters.'
+    // }
 ]
 
 export const skills: SkillsDocument[] = [

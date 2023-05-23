@@ -12,26 +12,27 @@ export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
     return (
         <ComponentShell
             textColor={textColor}
-            heading="About"
+            heading="Profile"
             id="about"
         >
             <Container
                 sx={{
                     display: "flex",
                     flexDirection: { xs: "column", sm: "row" },
-                    gap: "50px",
+                    // gap: "50px",
                     alignItems: "center",
+                    padding: "0 50px",
                     justifyContent: "center",
-                    padding: "0px !important"
+                    // padding: "0px !important"
                 }}
             >
-                <Image
+                {/* <Image
                     src={aboutImage}
                     width={350}
                     height={350}
                     alt="Profile image"
                     loading="lazy"
-                />
+                /> */}
                 <Typography
                     variant="body1"
                     sx={{
