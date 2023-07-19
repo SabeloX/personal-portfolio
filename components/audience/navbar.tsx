@@ -1,11 +1,11 @@
 import { AppBar, Box, Collapse, Container, IconButton, Toolbar, Typography } from "@mui/material"
-import { Link } from "react-scroll";
 import MenuIcon from '@mui/icons-material/Menu';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Close } from "@mui/icons-material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Colours } from "@/colours";
+import Link from "next/link";
 
 const locations = [
     {
@@ -40,11 +40,13 @@ export interface NavbarProps {
 export const Navbar = () => {
     const textColor = Colours.red;
     const [open, setOpen] = useState<boolean>(false);
+    const menuRef = useRef<HTMLAnchorElement>(null);
+    const ulRef = useRef<HTMLUListElement>(null);
     return (
         <nav className="custom-navbar" data-spy="affix" data-offset-top="20">
             <div className="container">
                 <a className="logo" href="#">Sabelo</a>         
-                <ul className="nav">
+                <ul ref={ulRef} className="nav">
                     <li className="item">
                         <a className="link" href="#home">Home</a>
                     </li>
@@ -67,11 +69,26 @@ export const Navbar = () => {
                         <a href="components.html" className="btn btn-primary">Components</a>
                     </li>
                 </ul>
-                <a href="javascript:void(0)" id="nav-toggle" className="hamburger hamburger--elastic">
-                    <div className="hamburger-box">
-                    <div className="hamburger-inner"></div>
-                    </div>
-                </a>
+                <IconButton
+                    onClick={() => {
+                        if (menuRef.current && ulRef.current) {
+                            menuRef.current.classList.toggle("is-active")
+                            ulRef.current.classList.toggle("show")
+                        }
+                    }}
+                    disableRipple
+                >
+                    <Link
+                        href=""
+                        id="nav-toggle"
+                        className="hamburger hamburger--elastic"
+                        ref={menuRef}
+                    >
+                        <div className="hamburger-box">
+                            <div className="hamburger-inner"></div>
+                        </div>
+                    </Link>
+                </IconButton>
             </div>          
         </nav>
     )
