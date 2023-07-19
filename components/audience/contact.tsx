@@ -6,11 +6,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import axios from "axios";
 
 export interface ContactProps {
-    textColor: string;
-    mainColor: string;
     contact: string;
     email: string;
-    theme: string;
 }
 
 type StateVariable = {
@@ -18,14 +15,40 @@ type StateVariable = {
     error: boolean;
 }
 
-export const Contact = ({ textColor, mainColor, contact, email, theme }: ContactProps) => {
+export const Contact = ({ contact, email }: ContactProps) => {
     const [name, setName] = useState<StateVariable>({ value: "", error: false });
     const [emailAddress, setEmail] = useState<StateVariable>({ value: "", error: false });
     const [message, setMessage] = useState<StateVariable>({ value: "", error: false });
     const [subject, setSubject] = useState<StateVariable>({ value: "", error: false });
     const [open, setOpen] = useState<boolean>(false);
     const [feeback, setFeedback] = useState<{ value: string; error: boolean }>({ value: "Email sent. I will chat with you soon!", error: false });
+
     return (
+        <section className="section" id="contact">
+            <div className="container text-center">
+                <p className="section-subtitle">How can you communicate?</p>
+                <h6 className="section-title mb-5">Contact Me</h6>
+                <form action="" className="contact-form col-md-10 col-lg-8 m-auto">
+                    <div className="form-row">
+                        <div className="form-group col-sm-6">
+                            <input type="text" size={50} className="form-control" placeholder="Your Name" required/>
+                        </div>
+                        <div className="form-group col-sm-6">
+                            <input type="email" className="form-control" placeholder="Enter Email" required/>
+                        </div>
+                        <div className="form-group col-sm-12">
+                            <textarea name="comment" id="comment" rows={6} className="form-control" placeholder="Write Something"></textarea>
+                        </div>
+                        <div className="form-group col-sm-12 mt-3">
+                            <input type="submit" value="Send Message" className="btn btn-outline-primary rounded"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    )
+}
+    {/* return (
         <ComponentShell
             heading="Get in touch"
             textColor={textColor}
@@ -362,4 +385,4 @@ export const Contact = ({ textColor, mainColor, contact, email, theme }: Contact
             </Snackbar>
         </ComponentShell>
     )
-}
+} */}

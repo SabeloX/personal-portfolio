@@ -5,4 +5,5 @@ export const Colours = {
     lightThemeMainColor: "#fff",
     lightThemeLightToneColor: "#000",
     lightThemeTextColor: "#000000",
+    red: "#D40000"
 }

@@ -5,6 +5,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Close } from "@mui/icons-material";
 import { useState } from "react";
+import { Colours } from "@/colours";
 
 const locations = [
     {
@@ -32,151 +33,46 @@ const locations = [
 const logoText = "Sabelo";
 
 export interface NavbarProps {
-    textColor: string;
-    backgroundColor: string;
-    theme: "dark" | "light";
     setTheme: (value: "dark" | "light") => void;
     lightShadeColor: string;
 }
 
-export const Navbar = ({ textColor, backgroundColor, theme, setTheme, lightShadeColor }: NavbarProps) => {
+export const Navbar = () => {
+    const textColor = Colours.red;
     const [open, setOpen] = useState<boolean>(false);
     return (
-        <nav>
-            <AppBar
-                position="fixed"
-                sx={{
-                    backgroundColor,
-                    boxShadow: "none",
-                    height: "10vh",
-                    width: "100%",
-                    top: 0
-                }}
-            >
-                <Toolbar>
-                    <Container
-                        maxWidth="lg"
-                        sx={{
-                            gap: "30px",
-                            display: { sx: "none", md: "flex", sm: "flex", xs: "none" },
-                            alignItems: "center"
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                color: textColor,
-                                fontSize: "24px"
-                            }}
-                        >
-                            {logoText}
-                        </Typography>
-                        {
-                            locations.map((item, index) => (
-                                <Link
-                                    className="text"
-                                    key={index}
-                                    to={item.path}
-                                    smooth={true}
-                                    duration={800}
-                                    offset={-20}
-                                    style={{
-                                        color: textColor,
-                                        cursor: "pointer"
-                                    }}
-                                >
-                                    {item.label}
-                                </Link>
-                            ))
-                        }
-                    </Container>
-                    <Container
-                        sx={{
-                            padding: "0px  !important",
-                            display: { sm: "none", xs: "flex" },
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        <IconButton
-                            onClick={() => setOpen(true)}
-                        >
-                            <MenuIcon sx={{ color: textColor }} fontSize="large" />
-                        </IconButton>
-                        <Typography
-                            variant="subtitle1"
-                            className="text"
-                            sx={{
-                                color: textColor,
-                                fontSize: "24px"
-                            }}
-                        >
-                            {logoText}
-                        </Typography>
-                        <Collapse
-                            in={open}
-                            timeout={{
-                                enter: 500,
-                                exit: 500
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    backgroundColor,
-                                    height: "100vh",
-                                    width: "100vw",
-                                    position: "absolute",
-                                    left: 0,
-                                    top: 0,
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "60px",
-                                    justifyContent: "center",
-                                    alignItems: "center"
-                                }}
-                            >
-                                <IconButton
-                                    sx={{
-                                        position: "absolute",
-                                        top: "-30px",
-                                        left: "-30px",
-                                        padding: "40px"
-                                    }}
-                                    onClick={() => setOpen(false)}
-                                >
-                                    <Close sx={{ color: textColor }} fontSize="large"/>
-                                </IconButton>
-                                {
-                                    locations.map((item, index) => (
-                                        <Link
-                                            className="text"
-                                            key={index}
-                                            to={item.path}
-                                            smooth={true}
-                                            duration={800}
-                                            offset={-40}
-                                            style={{
-                                                color: textColor,
-                                                cursor: "pointer",
-                                                fontSize: "34px"
-                                            }}
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    ))
-                                }
-                            </Box>
-                        </Collapse>
-                    </Container>
-                    <IconButton
-                        onClick={() => theme === "dark" ? setTheme("light") : setTheme("dark")}
-                    >
-                        {
-                            theme === "dark" ? <LightModeIcon fontSize="large" sx={{ color: textColor }} /> : <DarkModeIcon fontSize="large" sx={{ color: textColor }} />
-                        }
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
+        <nav className="custom-navbar" data-spy="affix" data-offset-top="20">
+            <div className="container">
+                <a className="logo" href="#">Sabelo</a>         
+                <ul className="nav">
+                    <li className="item">
+                        <a className="link" href="#home">Home</a>
+                    </li>
+                    <li className="item">
+                        <a className="link" href="#about">About</a>
+                    </li>
+                    <li className="item">
+                        <a className="link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li className="item">
+                        <a className="link" href="#testmonial">Testmonial</a>
+                    </li>
+                    <li className="item">
+                        <a className="link" href="#blog">Blog</a>
+                    </li>
+                    <li className="item">
+                        <a className="link" href="#contact">Contact</a>
+                    </li>
+                    <li className="item ml-md-3">
+                        <a href="components.html" className="btn btn-primary">Components</a>
+                    </li>
+                </ul>
+                <a href="javascript:void(0)" id="nav-toggle" className="hamburger hamburger--elastic">
+                    <div className="hamburger-box">
+                    <div className="hamburger-inner"></div>
+                    </div>
+                </a>
+            </div>          
         </nav>
     )
 }

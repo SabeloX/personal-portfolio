@@ -1,48 +1,28 @@
-import { Container, Typography } from "@mui/material";
 import Image from "next/image";
-import { ComponentShell } from "../component-shell";
 
 export interface AboutProps {
-    textColor: string;
     aboutText: string;
     aboutImage: string;
 }
 
-export const About = ({ textColor, aboutText, aboutImage } : AboutProps) => {
+export const About = ({ aboutText, aboutImage } : AboutProps) => {
     return (
-        <ComponentShell
-            textColor={textColor}
-            heading="Profile"
-            id="about"
-        >
-            <Container
-                sx={{
-                    display: "flex",
-                    flexDirection: { xs: "column", sm: "row" },
-                    // gap: "50px",
-                    alignItems: "center",
-                    padding: "0 50px",
-                    justifyContent: "center",
-                    // padding: "0px !important"
-                }}
-            >
-                {/* <Image
-                    src={aboutImage}
-                    width={350}
-                    height={350}
-                    alt="Profile image"
-                    loading="lazy"
-                /> */}
-                <Typography
-                    variant="body1"
-                    sx={{
-                        color: textColor
-                    }}
-                    className="text"
-                >
-                    {aboutText}
-                </Typography>
-            </Container>
-        </ComponentShell>
+        <section className="section pt-0" id="about">
+            <div className="container text-center">
+                <div className="about">
+                    <div className="about-img-holder">
+                        <Image width={400} height={400} src="/profile.png" className="about-img" alt="Sabelo profile image"/>
+                    </div>
+                    <div className="about-caption">
+                        <p className="section-subtitle">Who Am I ?</p>
+                        <h2 className="section-title mb-3">About Me</h2>
+                        <p>
+                            My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.              
+                        </p>
+                        <button className="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
+                    </div>              
+                </div>
+            </div>
+        </section>
     )
 }

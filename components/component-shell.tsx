@@ -14,11 +14,11 @@ export const ComponentShell = ({ heading, textColor, children, sx, subHeading, i
     return (
         <Container
             sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "20px",
-                // minHeight: "100vh",
-                padding: "60px 16px",
+                // display: "flex",
+                // flexDirection: "column",
+                // gap: "20px",
+                // // minHeight: "100vh",
+                // padding: "60px 16px",
                 ...sx
             }}
             id={id}

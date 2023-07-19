@@ -1,36 +1,25 @@
-import { Container, Typography } from "@mui/material"
+import { Button, Container, Typography } from "@mui/material"
+import Image from "next/image";
 
 export interface HeroProps {
-    textColor: string;
     name: string;
     profession: string;
     slogan: string;
 }
 
-export const Hero = ({ textColor, name, profession, slogan } : HeroProps) => {
+export const Hero = ({ name, profession, slogan } : HeroProps) => {
     return (
-        <Container
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                height: "100vh",
-                justifyContent: "center",
-                textAlign: "center"
-            }}
-        >
-            <Typography 
-                className="heading"
-                sx={{
-                    color: textColor,
-                    fontSize: "44px"
-                }} variant="h4">{name}</Typography>
-            <Typography 
-                className="heading" sx={{ color: textColor,
-                    fontSize: "76px" }} variant="h2">{ profession }</Typography>
-            <Typography
-                className="text" sx={{ color: textColor ,
-                    fontSize: "20px"}} variant="subtitle2">{ slogan }</Typography>
-        </Container>
+        <header id="home" className="header">
+            <div className="overlay"></div>
+            <div className="header-content container">
+                <h1 className="header-title">
+                    <span className="up">HI!</span>
+                    <span className="down">I am Sabelo Mtetwa</span>
+                </h1>
+                <p className="header-subtitle">SOFTWARE DEVELOPER</p>            
+
+                <button className="btn btn-primary">Get in touch</button>
+            </div>              
+        </header>
     )
 }

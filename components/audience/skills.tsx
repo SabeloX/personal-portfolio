@@ -4,102 +4,63 @@ import { SkillsDocument } from "../../lib/database";
 import Image from "next/image";
 
 export interface SkillsProps {
-    textColor: string;
     skills: SkillsDocument[];
-    mainColor: string;
-    theme: string;
 }
 
-export const Skills = ({textColor, skills, mainColor, theme}: SkillsProps) => {
+export const Skills = ({skills}: SkillsProps) => {
     return (
-        <ComponentShell
-            heading="Skills"
-            textColor={textColor}
-            id="skills"
-        >
-            <Container
-                sx={{
-                    padding: "0px !important",
-                    display: "flex",
-                    flexDirection: { xs: "column", sm: "row" },
-                    gap: "20px",
-                }}
-            >
-                {
-                    skills.map((item, index) => (
-                        <Box
-                            key={item._id + index}
-                            sx={{
-                                backgroundColor: mainColor,
-                                borderRadius: "20px",
-                                boxShadow: `2px 2px 12px ${theme === "dark" ? "rgba(255,255,255,30%)" : "rgba(0,0,0,30%)"}`,
-                                border: `1px solid ${theme === "dark" ? "#fff" : "#000"}`,
-                                padding: "20px",
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "20px",
-                                height: "400px",
-                                width: { sm: "400px" }
-                            }}
-                        >
-                            <Typography
-                                className="heading"
-                                variant="h5"
-                                fontSize={30}
-                                color={textColor}
-                                sx={{
-                                    textDecoration: "underline"
-                                }}
+        <section className="section" id="service">
+            <div className="container text-center">
+                <p className="section-subtitle">What Skills Do I Have ?</p>
+                <h6 className="section-title mb-6">Skills</h6>
+
+                <div className="row">
+                    {
+                        skills.map((skill, index) => (
+                            <div
+                                className="col-md-6 col-lg-4"
+                                key={index}
                             >
-                                {item.title}
-                            </Typography>
-                            <Container
-                                sx={{
-                                    padding: "0 !important",
-                                    display: "flex",
-                                    // flexDirection: "column",
-                                    flexWrap: "wrap",
-                                    // minHeight: "160px",
-                                    gap: "10px"
-                                }}
-                            >
-                                {
-                                    item.data.map((skill: any, index: number) => (
-                                        <Container
-                                            sx={{
-                                                display: "flex",
-                                                alignItems: "center",
-                                                gap: "5px",
-                                                padding: "0 !important",
-                                                width: "unset"
-                                            }}
-                                            key={index + skill}
-                                        >
-                                            {skill.icon && <Image
-                                                src={skill.icon}
-                                                width={30}
-                                                height={30}
-                                                alt="icon"
-                                            />}
-                                            <Typography
-                                                variant="body1"
-                                                className="text"
-                                                sx={{
-                                                    color: textColor
-                                                }}
-                                                fontSize={22}
-                                                lineHeight={1.75}
-                                            >
-                                                { skill.skill }
-                                            </Typography>
-                                        </Container>
-                                    ))
-                                }
-                            </Container>
-                        </Box>
-                    ))
-                }
-            </Container>
-        </ComponentShell>
+                                <div className="service-card">
+                                    <div className="body">
+                                        <Image width={55} height={55} src="/icons/fe.png" alt="" className="icon" />
+                                        <h6 className="title">Adipisicing</h6>
+                                        <p className="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                    {/* <div className="col-md-6 col-lg-3">
+                        <div className="service-card">
+                            <div className="body">
+                                <img src="assets/imgs/responsive.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" className="icon">
+                                <h6 className="title">Sapiente</h6>
+                                <p className="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                        <div className="service-card">
+                            <div className="body">
+                                <img src="assets/imgs/toolbox.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" className="icon">
+                                <h6 className="title">Placeat</h6>
+                                <p className="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                        <div className="service-card">
+                            <div className="body">
+                                <Image width={55} height={55} src="/icons/fe.png" alt="" className="icon"/>
+                                <h6 className="title">Iusto</h6>
+                                <p className="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+            </div>
+        </section>
     )
 }
