@@ -28,23 +28,158 @@ export const Contact = ({ contact, email }: ContactProps) => {
             <div className="container text-center">
                 <p className="section-subtitle">How can you communicate?</p>
                 <h6 className="section-title mb-5">Contact Me</h6>
-                <form action="" className="contact-form col-md-10 col-lg-8 m-auto">
+                <form onSubmit={(e) => e.preventDefault()} action="" className="contact-form col-md-10 col-lg-8 m-auto">
                     <div className="form-row">
                         <div className="form-group col-sm-6">
-                            <input type="text" size={50} className="form-control" placeholder="Your Name" required/>
+                            <input
+                                type="text"
+                                size={50}
+                                className="form-control"
+                                placeholder="Your Name"
+                                required
+                                onChange={(event: ChangeEvent<HTMLInputElement>) => setName({ value: event.target.value, error: false })}
+                                value={name.value}
+                            />
                         </div>
                         <div className="form-group col-sm-6">
-                            <input type="email" className="form-control" placeholder="Enter Email" required/>
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter Email"
+                                value={emailAddress.value}
+                                required
+                                onChange={(event: ChangeEvent<HTMLInputElement>) => setEmail({ value: event.target.value, error: false })}
+                            />
                         </div>
                         <div className="form-group col-sm-12">
-                            <textarea name="comment" id="comment" rows={6} className="form-control" placeholder="Write Something"></textarea>
+                            <textarea
+                                name="comment"
+                                id="comment"
+                                rows={6}
+                                className="form-control"
+                                placeholder="Write Something"
+                                value={message.value}
+                                required
+                                onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setMessage({ value: event.target.value, error: false })}
+                            ></textarea>
                         </div>
+                        <FormGroup
+                            sx={{
+                                width: "100%",
+                                paddingLeft: "5px",
+                                paddingRight: "5px"
+                            }}
+                        >
+                            <RadioGroup
+                                sx={{
+                                    flexDirection: { md: "row", xs: "column" },
+                                    justifyContent: "center" ,
+                                    gap: { md: "20px", sm: "10px" },
+                                    color: "#212529",
+                                    "& .MuiButtonBase-root": {
+                                        color: "#212529",
+                                    },
+                                    width: "100%"
+                                }}
+                                value={subject.value}
+                                onChange={(event, value) => setSubject({ value, error: false })}
+                            >
+                                {
+                                    ["Request a service", "Enquire about me", "Just saying hi!"].map((item, index) => (
+                                        <FormControlLabel
+                                            key={index}
+                                            labelPlacement="end"
+                                            value={item}
+                                            control={<Radio />}
+                                            label={item}
+                                            sx={{
+                                                ".MuiTypography-root": {
+                                                    fontFamily: "'Patrick Hand', cursive",
+                                                    color: "#212529",
+                                                }
+                                            }}
+                                        />
+                                    ))
+                                }
+                            </RadioGroup>
+                            {subject.error &&
+                                <Typography
+                                    sx={{
+                                        color: "red",
+                                        fontSize: "12px"
+                                    }}
+                                    className="text"
+                                >
+                                    Please specify the reason.
+                                </Typography>
+                            }
+                        </FormGroup>
                         <div className="form-group col-sm-12 mt-3">
-                            <input type="submit" value="Send Message" className="btn btn-outline-primary rounded"/>
+                            <input
+                                type="submit"
+                                value="Send Message"
+                                className="btn btn-outline-primary rounded"
+                                onClick={() => {
+                                    if (name.value === "" || emailAddress.value === "" || subject.value === "" || message.value === "") {
+                                        if (name.value === "") {
+                                            setName({ value: name.value, error: true })
+                                        }
+                                        if (emailAddress.value === "") {
+                                            setEmail({ value: emailAddress.value, error: true })
+                                        }
+                                        if (subject.value === "") {
+                                            setSubject({ value: subject.value, error: true })
+                                        }
+                                        if (message.value === "") {
+                                            setMessage({ value: message.value, error: true })
+                                        }
+                                    }
+                                    else {
+                                        axios.post(
+                                            "https://public.herotofu.com/v1/dcf54ab0-e864-11ed-b24a-93241516dd10",
+                                            {
+                                                name: name.value,
+                                                email: emailAddress.value,
+                                                subject: subject.value,
+                                                message: message.value
+                                            }).
+                                            then(result => {
+                                                setName({ value: "", error: false });
+                                                setEmail({ value: "", error: false });
+                                                setMessage({ value: "", error: false });
+                                                setSubject({ value: "", error: false });
+                                                setOpen(true);
+                                            })
+                                            .catch(error => {
+                                                setFeedback({ value: "An error has occured. Please contact the email: sabelo.x.mtetwa@gmail.com", error: true });
+                                                setOpen(true);
+                                            })
+                                    }
+                                }}
+                            />
                         </div>
                     </div>
                 </form>
             </div>
+            <Snackbar
+                open={open}
+                sx={{
+                    background: "#1e549f",
+                    padding: "20px",
+                    borderRadius: "20px",
+                }}
+                autoHideDuration={2500}
+                onClose={() => setOpen(false)}
+            >
+                <Typography
+                    sx={{
+                        color: feeback.error ? "red" : "white"
+                    }}
+                    className="text"
+                >
+                    {feeback.value}
+                </Typography>
+            </Snackbar>
         </section>
     )
 }
