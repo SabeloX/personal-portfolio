@@ -2,6 +2,7 @@ import { Button, Container, List, ListItem, Typography } from "@mui/material";
 import Image from "next/image";
 import { ComponentShell } from "../component-shell"
 import { ProjectsDocument } from "../../lib/database";
+import { Flex } from "@mantine/core";
 
 export interface ProjectsProps {
     projects: ProjectsDocument[];
@@ -20,7 +21,7 @@ export const Projects = ({ projects } : ProjectsProps) => {
                                 key={index}
                                 className="col-md-4"
                             >
-                                <a href="#" className="portfolio-card">
+                                <a className="portfolio-card">
                                     <Image
                                         width={300}
                                         height={300}
@@ -33,8 +34,15 @@ export const Projects = ({ projects } : ProjectsProps) => {
                                     />
                                     <span className="portfolio-card-overlay">
                                         <span className="portfolio-card-caption">
-                                            <h4>Web Designing</h4>
-                                            <p className="font-weight-normal">Category: Web Templates</p>
+                                            <h4>{project.title}</h4>
+                                            <p className="font-weight-normal">{project.description}</p>
+                                            <Flex
+                                                justify="center"
+                                                gap={20}
+                                            >
+                                                <a href={project.demo} target="_blank" className="btn btn-primary">View</a>
+                                                <a href={project.source} target="_blank" className="btn btn-primary">Code</a>
+                                            </Flex>
                                         </span>
                                     </span>
                                 </a>

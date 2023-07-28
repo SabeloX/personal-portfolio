@@ -24,7 +24,7 @@ export const Hero = ({ name, profession, slogan }: HeroProps) => {
                 </h1>
                 <p className="header-subtitle"  style={{ color: "#fff"}}>SOFTWARE DEVELOPER</p>            
 
-                <button className="btn btn-primary">Get in touch</button>
+                <a href="#contact" className="btn btn-primary">Get in touch</a>
             </div>              
         </header>
     )

@@ -43,7 +43,7 @@ export default function Home() {
                     <p className="m-0 text-light">Always feel Free to Contact & Hire me</p>
                 </div>
                 <div className="col-sm offset-sm-2 offset-md-3">
-                    <button className="btn btn-lg my-font btn-light rounded">Hire Me</button>
+                    <a href="#contact" className="btn btn-lg my-font btn-light rounded">Hire Me</a>
                 </div>
             </div>
           </div>
