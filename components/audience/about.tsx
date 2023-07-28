@@ -7,17 +7,27 @@ export interface AboutProps {
 
 export const About = ({ aboutText, aboutImage } : AboutProps) => {
     return (
-        <section className="section pt-0" id="about">
+        <section className="section" id="about">
             <div className="container text-center">
-                <div className="about">
-                    <div className="about-img-holder">
-                        <Image width={400} height={400} src="/profile.png" className="about-img" alt="Sabelo profile image"/>
+                <div className="about" style={{ gap: "50px"}}>
+                    <div className="about-img-holder" style={{ justifyContent: "center"}}>
+                        <Image
+                            style={{
+                                objectFit: "contain",
+                                maxWidth: "100%",
+                            }}
+                            width={400}
+                            height={400}
+                            src={aboutImage}
+                            className="about-img"
+                            alt="Sabelo profile image"
+                        />
                     </div>
                     <div className="about-caption">
                         <p className="section-subtitle">Who Am I ?</p>
                         <h2 className="section-title mb-3">About Me</h2>
                         <p>
-                            My interest in the field began as a hobby, but as I discovered my passion for it, I decided to pursue it professionally. I studied Electrical and Computer Engineering at the University of Cape Town, majoring in Computer Science and Embedded Systems. I am eager to make a contribution to the tech industry and be a part of something remarkable.              
+                            { aboutText }
                         </p>
                         <button className="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
                     </div>              

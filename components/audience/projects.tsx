@@ -12,7 +12,7 @@ export const Projects = ({ projects } : ProjectsProps) => {
         <section className="section" id="portfolio">
             <div className="container text-center">
                 <p className="section-subtitle">What I Did ?</p>
-                <h6 className="section-title mb-6">Portfolio</h6>
+                <h6 className="section-title mb-6">Projects</h6>
                 <div className="row">
                     {
                         projects.map((project, index) => (

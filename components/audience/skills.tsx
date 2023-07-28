@@ -12,7 +12,7 @@ export const Skills = ({skills}: SkillsProps) => {
         <section className="section" id="service">
             <div className="container text-center">
                 <p className="section-subtitle">What Skills Do I Have ?</p>
-                <h6 className="section-title mb-6">Skills</h6>
+                <h6 className="section-title text-blue mb-6">Skills</h6>
 
                 <div className="row">
                     {

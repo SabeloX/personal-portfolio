@@ -7,16 +7,22 @@ export interface HeroProps {
     slogan: string;
 }
 
-export const Hero = ({ name, profession, slogan } : HeroProps) => {
+export const Hero = ({ name, profession, slogan }: HeroProps) => {
+    const domain = window.location.origin
     return (
-        <header id="home" className="header">
+        <header id="home" className="header"
+            style={{
+                backgroundImage: `url(${domain}/bg-img.jpg)`,
+                backgroundSize: "cover",
+            }}
+        >
             <div className="overlay"></div>
             <div className="header-content container">
                 <h1 className="header-title">
-                    <span className="up">HI!</span>
-                    <span className="down">I am Sabelo Mtetwa</span>
+                    {/* <span className="up">HI!</span> */}
+                    <span style={{ color: "#fff"}} className="down">Sabelo Mtetwa</span>
                 </h1>
-                <p className="header-subtitle">SOFTWARE DEVELOPER</p>            
+                <p className="header-subtitle"  style={{ color: "#fff"}}>SOFTWARE DEVELOPER</p>            
 
                 <button className="btn btn-primary">Get in touch</button>
             </div>              

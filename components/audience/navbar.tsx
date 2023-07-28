@@ -77,13 +77,10 @@ export const Navbar = () => {
                         <a className="link" href="#service">Skills</a>
                     </li>
                     <li className="item">
-                        <a className="link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li className="item">
-                        <a className="link" href="#contact">Contact</a>
+                        <a className="link" href="#portfolio">Projects</a>
                     </li>
                     <li className="item ml-md-3">
-                        <a href="components.html" className="btn btn-primary">Components</a>
+                        <a className="btn btn-primary" href="#contact">Contact</a>
                     </li>
                 </ul>
                 <div
