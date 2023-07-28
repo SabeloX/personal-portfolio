@@ -108,7 +108,15 @@ export const Navbar = () => {
                             </li>
                         ))
                     }
-                    <li className="item ml-md-3">
+                    <li
+                        onClick={() => {
+                            if (menuRef.current && ulRef.current) {
+                                menuRef.current.classList.toggle("is-active")
+                                ulRef.current.classList.toggle("show")
+                            }
+                        }}
+                        className="item ml-md-3"
+                    >
                         <a className="btn btn-primary" href="#contact">Contact</a>
                     </li>
                 </ul>
