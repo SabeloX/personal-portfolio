@@ -85,7 +85,8 @@ export const skills: SkillsDocument[] = [
                 skill: 'Responsiveness',
                 icon: "/icons/respo.svg"
             }
-        ]
+        ],
+        icon: "/icons/fe.png"
     },
     {
         _id: '6452ebd0dbda447312f561fc',
@@ -109,17 +110,19 @@ export const skills: SkillsDocument[] = [
             },
             {
                 skill:'SQL',
-                icon: "/icons/express.svg"
+                icon: "/icons/database.png"
             },
             {
                 skill: 'REST API',
-                icon: "/icons/express.svg"
+                icon: "/icons/api.png"
             },
             {
                 skill: 'AWS DynamoDB',
-                icon: "/icons/express.svg"
+                icon: "/icons/aws.png"
             }
-        ]
+        ],
+        icon: "/icons/backend.svg"
+
     },
     {
         _id: '6452ec31dbda447312f561fd',
@@ -127,24 +130,25 @@ export const skills: SkillsDocument[] = [
         data: [
             {
                 skill: 'Git/Github',
-                icon: "/icons/express.svg"
+                icon: "/icons/github.png"
             },
             {
                 skill: 'AWS Services',
-                icon: "/icons/express.svg"
+                icon: "/icons/aws.png"
             },
             {
                 skill: 'Agile/SCRUM',
-                icon: "/icons/express.svg"
+                icon: "/icons/scrum.png"
             },
             {
                 skill: 'Typescript',
-                icon: "/icons/express.svg"
+                icon: "/icons/typescript.png"
             },
             {
                 skill: 'Linux/Unix',
-                icon: "/icons/express.svg"
+                icon: "/icons/linux.png"
             }
-        ]
+        ],
+        icon: "/icons/other.png"
     }
 ]

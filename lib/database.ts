@@ -37,6 +37,7 @@ export interface SkillsDocument {
     }[];
     title: string;
     _id: string;
+    icon: string;
 }
 
 /**
