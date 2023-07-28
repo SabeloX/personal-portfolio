@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { Colours } from "@/colours";
 import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link"
+import { useMediaQuery } from "@mantine/hooks";
 
 const locations = [
     {
@@ -44,6 +45,7 @@ export const Navbar = () => {
     const menuRef = useRef<HTMLAnchorElement>(null);
     const ulRef = useRef<HTMLUListElement>(null);
     const navbarRef = useRef<HTMLElement>(null);
+    const largeScreen = useMediaQuery("(min-width: 992px)");
     const scrollEvent = () => {
         if (window.scrollY >= 85) {
             if (navbarRef.current) {
@@ -59,50 +61,80 @@ export const Navbar = () => {
         }
     }
     useEffect(() => {
+        const timer = setTimeout(() => {
+            if (ulRef.current) {
+                largeScreen ? ulRef.current.classList.add("show") : ulRef.current.classList.remove("show")
+            }
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, [largeScreen]);
+    useEffect(() => {
         scrollEvent();
         window.addEventListener("scroll", scrollEvent)
     });
     return (
         <nav ref={navbarRef} className="custom-navbar" data-spy="affix" data-offset-top="20">
-            <div className="container">
-                <a className="logo" href="#">Sabelo</a>         
+            <div className="container"
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}
+            >
+                <a
+                    className="logo"
+                    href="#"
+                >
+                    Sabelo
+                </a>         
                 <ul ref={ulRef} className="nav">
-                    <li className="item">
-                        <a className="link" href="#home">Home</a>
-                    </li>
-                    <li className="item">
-                        <a className="link" href="#about">About</a>
-                    </li>
-                    <li className="item">
-                        <a className="link" href="#service">Skills</a>
-                    </li>
-                    <li className="item">
-                        <a className="link" href="#portfolio">Projects</a>
-                    </li>
+                    {
+                        [
+                            { label: "Home", route: "#home" },
+                            { label: "About", route: "#about" },
+                            { label: "Skills", route: "#service" },
+                            { label: "Projects", route: "#portfolio" },
+                        ].map((item, index) => (
+                            <li
+                                key={index}
+                                className="item"
+                                onClick={() => {
+                                    if (menuRef.current && ulRef.current) {
+                                        menuRef.current.classList.toggle("is-active")
+                                        ulRef.current.classList.toggle("show")
+                                    }
+                                }}
+                            >
+                                <a className="link" href={item.route}>{item.label}</a>
+                            </li>
+                        ))
+                    }
                     <li className="item ml-md-3">
                         <a className="btn btn-primary" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <div
-                    onClick={() => {
-                        if (menuRef.current && ulRef.current) {
-                            menuRef.current.classList.toggle("is-active")
-                            ulRef.current.classList.toggle("show")
-                        }
-                    }}
-                >
-                    <Link
-                        href=""
-                        id="nav-toggle"
-                        className="hamburger hamburger--elastic"
-                        ref={menuRef}
+                {
+                    !largeScreen &&
+                    <div
+                        onClick={() => {
+                            if (menuRef.current && ulRef.current) {
+                                menuRef.current.classList.toggle("is-active")
+                                ulRef.current.classList.toggle("show")
+                            }
+                        }}
                     >
-                        <div className="hamburger-box">
-                            <div className="hamburger-inner"></div>
-                        </div>
-                    </Link>
-                </div>
-            </div>          
+                        <Link
+                            href=""
+                            id="nav-toggle"
+                            className="hamburger hamburger--elastic"
+                            ref={menuRef}
+                        >
+                            <div className="hamburger-box">
+                                <div className="hamburger-inner"></div>
+                            </div>
+                        </Link>
+                    </div>
+                }
+                </div>          
         </nav>
     )
 }
