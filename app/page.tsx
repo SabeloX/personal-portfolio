@@ -15,6 +15,7 @@ import { Footer } from '@/components/audience/footer';
 import { ParallaxProvider, useParallax } from 'react-scroll-parallax';
 
 export default function Home() {
+  const domain = window.location.origin
 
   return (
     <ParallaxProvider>
@@ -23,11 +24,13 @@ export default function Home() {
         <Hero
           name={`${details.name} ${details.surname}`}
           slogan={details.slogan}
+          domain={domain}
           profession={details.profession}
         />
         <About
           aboutImage={details.profile}
           aboutText={details.about}
+          domain={domain}
         />
         <Skills
           skills={skills}

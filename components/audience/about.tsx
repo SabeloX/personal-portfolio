@@ -1,11 +1,19 @@
+import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export interface AboutProps {
     aboutText: string;
     aboutImage: string;
+    domain: string;
 }
 
-export const About = ({ aboutText, aboutImage } : AboutProps) => {
+export const About = ({ aboutText, aboutImage, domain }: AboutProps) => {
+    const downloadCV = () => {
+        axios.get(`${domain}/CV Sabelo Mtetwa.pdf`)
+    }
+    console.log(`${domain}/CV Sabelo Mtetwa.pdf`)
+    
     return (
         <section className="section" id="about">
             <div className="container text-center">
@@ -29,7 +37,12 @@ export const About = ({ aboutText, aboutImage } : AboutProps) => {
                         <p>
                             { aboutText }
                         </p>
-                        <button className="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
+                        <a
+                            className="btn-rounded btn btn-outline-primary mt-4"
+                            href={`${domain}/CV Sabelo Mtetwa.pdf`}
+                            target="_blank"
+                        >
+                            Download CV</a>
                     </div>              
                 </div>
             </div>
