@@ -9,10 +9,14 @@ import { Contact } from '@/components/audience/contact';
 import { Footer } from '@/components/audience/footer';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { useMediaQuery } from '@mantine/hooks';
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
-  const domain = window.location.origin
+  const domainRef = useRef<string>("");
   const largeScreen = useMediaQuery("(min-width: 992px)");
+  useEffect(() => {
+    domainRef.current = window.location.origin
+  }, []);
 
   return (
     <ParallaxProvider>
@@ -23,13 +27,13 @@ export default function Home() {
         <Hero
           name={`${details.name} ${details.surname}`}
           slogan={details.slogan}
-          domain={domain}
+          domain={domainRef.current}
           profession={details.profession}
         />
         <About
           aboutImage={details.profile}
           aboutText={details.about}
-          domain={domain}
+          domain={domainRef.current}
         />
         <Skills
           skills={skills}
