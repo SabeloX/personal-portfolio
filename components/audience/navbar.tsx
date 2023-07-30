@@ -9,43 +9,14 @@ import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link"
 import { useMediaQuery } from "@mantine/hooks";
 
-const locations = [
-    {
-        label: "Home",
-        path: "home"
-    },
-    {
-        label: "About",
-        path: "about"
-    },
-    {
-        label: "Skills",
-        path: "skills"
-    },
-    {
-        label: "Projects",
-        path: "projects"
-    },
-    {
-        label: "Contact",
-        path: "contact"
-    },
-]
-
-const logoText = "Sabelo";
-
 export interface NavbarProps {
-    setTheme: (value: "dark" | "light") => void;
-    lightShadeColor: string;
+    largeScreen: boolean;
 }
 
-export const Navbar = () => {
-    const textColor = Colours.red;
-    const [open, setOpen] = useState<boolean>(false);
+export const Navbar = ({ largeScreen } : NavbarProps) => {
     const menuRef = useRef<HTMLAnchorElement>(null);
     const ulRef = useRef<HTMLUListElement>(null);
     const navbarRef = useRef<HTMLElement>(null);
-    const largeScreen = useMediaQuery("(min-width: 992px)");
     const scrollEvent = () => {
         if (window.scrollY >= 85) {
             if (navbarRef.current) {

@@ -1,26 +1,25 @@
 "use client"
-import Image from 'next/image'
-import styles from './page.module.css'
 import { Hero } from '@/components/audience/hero'
-import { useEffect, useState } from 'react';
-import { Colours } from '@/colours';
 import { details, projects, skills } from '@/samples';
-import { Container } from '@mui/material';
 import { Navbar } from '@/components/audience/navbar';
 import { About } from '@/components/audience/about';
 import { Skills } from '@/components/audience/skills';
 import { Projects } from '@/components/audience/projects';
 import { Contact } from '@/components/audience/contact';
 import { Footer } from '@/components/audience/footer';
-import { ParallaxProvider, useParallax } from 'react-scroll-parallax';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { useMediaQuery } from '@mantine/hooks';
 
 export default function Home() {
   const domain = window.location.origin
+  const largeScreen = useMediaQuery("(min-width: 992px)");
 
   return (
     <ParallaxProvider>
       <>
-        <Navbar/>
+        <Navbar
+          largeScreen={largeScreen}
+        />
         <Hero
           name={`${details.name} ${details.surname}`}
           slogan={details.slogan}
@@ -37,6 +36,7 @@ export default function Home() {
         />
         <Projects
           projects={projects}
+          largeScreen={largeScreen}
         />
         <section className="section-sm bg-primary">
           <div className="container text-center text-sm-left">

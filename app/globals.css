@@ -11242,7 +11242,7 @@ p {
   width: 100%;
 }
 
-.portfolio-card:hover .portfolio-card-overlay {
+.portfolio-card:hover .portfolio-card-overlay , .portfolio-card:hover .portfolio-card-overlay.active {
   opacity: 1;
   visibility: visible;
   width: 100%;
