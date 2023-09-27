@@ -38,10 +38,10 @@ export default function Home() {
         <Skills
           skills={skills}
         />
-        <Projects
+        {/* <Projects
           projects={projects}
           largeScreen={largeScreen}
-        />
+        /> */}
         <section className="section-sm bg-primary">
           <div className="container text-center text-sm-left">
             <div className="row align-items-center">
