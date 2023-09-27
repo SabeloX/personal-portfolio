@@ -63,7 +63,7 @@ export const Navbar = ({ largeScreen } : NavbarProps) => {
                             { label: "Home", route: "#home" },
                             { label: "About", route: "#about" },
                             { label: "Skills", route: "#service" },
-                            { label: "Projects", route: "#portfolio" },
+                            // { label: "Projects", route: "#portfolio" },
                         ].map((item, index) => (
                             <li
                                 key={index}
